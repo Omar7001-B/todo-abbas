@@ -33,7 +33,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_margin="16dp"
+        android:layout_margin="32dp"
         android:backgroundTint="@android:color/holo_green_dark"
         android:src="@drawable/baseline_add"
         app:tint="@android:color/white"
