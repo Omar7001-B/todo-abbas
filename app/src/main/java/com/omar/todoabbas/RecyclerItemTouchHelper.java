@@ -59,7 +59,9 @@ public class RecyclerItemTouchHelper extends ItemTouchHelper.SimpleCallback {
     }
 
     @Override
-    public void onChildDraw(@NonNull Canvas c, @NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, float dX, float dY, int actionState, boolean isCurrentlyActive) {
+    public void onChildDraw(@NonNull Canvas c, @NonNull RecyclerView recyclerView, 
+                           @NonNull RecyclerView.ViewHolder viewHolder, float dX, float dY, 
+                           int actionState, boolean isCurrentlyActive) {
         super.onChildDraw(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive);
 
         Drawable icon;
@@ -68,16 +70,17 @@ public class RecyclerItemTouchHelper extends ItemTouchHelper.SimpleCallback {
         View itemView = viewHolder.itemView;
         int backgroundCornerOffset = 20;
 
-        if (dX > 0) {
-            icon = ContextCompat.getDrawable(adapter.getContext(), R.drawable.ic_baseline_edit);
-            background = new ColorDrawable(ContextCompat.getColor(adapter.getContext(), R.color.black));
-        } else {
-            icon = ContextCompat.getDrawable(adapter.getContext(), R.drawable.ic_baseline_delete);
+        if (dX > 0) { // Swiping to the right (edit)
+            icon = ContextCompat.getDrawable(adapter.getContext(), R.drawable.baseline_edit);
+            background = new ColorDrawable(ContextCompat.getColor(adapter.getContext(), R.color.colorPrimary));
+        } else { // Swiping to the left (delete)
+            icon = ContextCompat.getDrawable(adapter.getContext(), R.drawable.baseline_delete);
             background = new ColorDrawable(Color.RED);
         }
 
+        // Calculate icon dimensions
         assert icon != null;
-        int iconMargin = (itemView.getHeight() - icon.getIntrinsicHeight()) / 2;
+        int iconMargin = (itemView.getHeight() - icon.getIntrinsicHeight()) / 3;
         int iconTop = itemView.getTop() + (itemView.getHeight() - icon.getIntrinsicHeight()) / 2;
         int iconBottom = iconTop + icon.getIntrinsicHeight();
 
@@ -101,5 +104,10 @@ public class RecyclerItemTouchHelper extends ItemTouchHelper.SimpleCallback {
 
         background.draw(c);
         icon.draw(c);
+
+        // Add fade effect
+        float alpha = 1.0f - Math.abs(dX) / itemView.getWidth();
+        itemView.setAlpha(alpha);
+        itemView.setTranslationX(dX);
     }
 }

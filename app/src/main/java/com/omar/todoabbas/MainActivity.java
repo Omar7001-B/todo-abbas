@@ -84,6 +84,7 @@ public class MainActivity extends AppCompatActivity implements DialogCloseListen
             AppCompatDelegate.setDefaultNightMode(newDarkMode ? 
                 AppCompatDelegate.MODE_NIGHT_YES : 
                 AppCompatDelegate.MODE_NIGHT_NO);
+            recreate();
         });
     }
 
@@ -93,5 +94,11 @@ public class MainActivity extends AppCompatActivity implements DialogCloseListen
         Collections.reverse(taskList);
         tasksAdapter.setTasks(taskList);
         tasksAdapter.notifyDataSetChanged();
+        
+        // Ensure the RecyclerView updates visually
+        tasksRecyclerView.post(() -> {
+            tasksAdapter.notifyDataSetChanged();
+            tasksRecyclerView.scheduleLayoutAnimation();
+        });
     }
 }

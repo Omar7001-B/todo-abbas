@@ -85,6 +85,9 @@ public class ToDoAdapter extends RecyclerView.Adapter<ToDoAdapter.ViewHolder> {
         AddNewTask fragment = new AddNewTask();
         fragment.setArguments(bundle);
         fragment.show(activity.getSupportFragmentManager(), AddNewTask.TAG);
+        
+        // Reset the item's view immediately
+        notifyItemChanged(position);
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
