@@ -106,6 +106,11 @@ public class AddNewTask extends BottomSheetDialogFragment {
                 dismiss();
             }
         });
+
+        Button cancelButton = view.findViewById(R.id.newTaskCancelButton);
+        cancelButton.setOnClickListener(v -> {
+            dismiss();
+        });
     }
 
     @Override
