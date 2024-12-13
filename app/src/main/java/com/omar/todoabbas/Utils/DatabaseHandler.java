@@ -29,6 +29,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(CREATE_TODO_TABLE);
+        this.db = db;
+        addInitialTasks();
     }
 
     @Override
@@ -87,5 +89,25 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
     public void deleteTask(int id) {
         db.delete(TODO_TABLE, ID + "=?", new String[]{String.valueOf(id)});
+    }
+
+    private void addInitialTasks() {
+        String[] sampleTasks = {
+            "Buy groceries for the week",
+            "Schedule dentist appointment",
+            "Complete Android project documentation",
+            "Call mom",
+            "Pay utility bills",
+            "Go to the gym",
+            "Read 30 minutes of book",
+            "Update resume"
+        };
+
+        for (String task : sampleTasks) {
+            ToDoModel todoItem = new ToDoModel();
+            todoItem.setTask(task);
+            todoItem.setStatus(0);
+            insertTask(todoItem);
+        }
     }
 }
