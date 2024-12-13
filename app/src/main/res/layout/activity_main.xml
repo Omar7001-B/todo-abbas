@@ -6,26 +6,45 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".MainActivity">
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:id="@+id/headerLayout"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textStyle="bold"
-        android:text="Tasks"
-        android:textColor="?attr/colorOnSurface"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
         android:layout_marginStart="16dp"
-        android:layout_marginBottom="16dp"
+        android:layout_marginEnd="16dp"
         android:layout_marginTop="32dp"
-        android:textSize="32sp"/>
+        android:layout_marginBottom="16dp">
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textStyle="bold"
+            android:text="Tasks"
+            android:textColor="?attr/colorOnSurface"
+            android:textSize="32sp"/>
+
+        <ImageButton
+            android:id="@+id/darkModeButton"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="Toggle dark mode"
+            android:padding="12dp"
+            android:src="@drawable/ic_moon" />
+
+    </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/tasksRecyclerView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/textView"
+        android:layout_below="@+id/headerLayout"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        android:nestedScrollingEnabled="true"
-        />
+        android:nestedScrollingEnabled="true"/>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab"
@@ -36,20 +55,6 @@
         android:layout_margin="32dp"
         android:backgroundTint="@android:color/holo_green_dark"
         android:src="@drawable/baseline_add"
-        app:tint="@android:color/white"
-        />
-
-    <ImageButton
-        android:id="@+id/darkModeButton"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentBottom="true"
-        android:layout_margin="16dp"
-        android:background="?attr/selectableItemBackgroundBorderless"
-        android:contentDescription="Toggle dark mode"
-        android:src="@drawable/ic_moon"
-        android:padding="12dp"/>
-
+        app:tint="@android:color/white"/>
 
 </RelativeLayout>
