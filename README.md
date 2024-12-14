@@ -47,5 +47,6 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 
 ## Demo
 
-https://github.com/user-attachments/assets/4194c448-839c-4cde-acb1-b42f1fe31970
+https://github.com/user-attachments/assets/3fe257f9-7203-48a0-9bcf-95614d3d8177
+
 
