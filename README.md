@@ -44,3 +44,7 @@ A modern Android todo list application with dark mode support and material desig
 ## License
 
 This project is licensed under the MIT License - see the LICENSE file for details
+
+## Demo
+
+https://github.com/Omar7001-B/TodoAbbas/raw/main/Screenshots/v1.0.0/demo.mp4
